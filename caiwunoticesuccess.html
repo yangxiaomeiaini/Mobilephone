@@ -1,0 +1,76 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,
+              maximum-scale=1.0,user-scalable=no"/>
+            <meta name="format-detection" content="telephone=no,email=no,address=no ">
+            <meta http-equiv="refresh" content="5;url=hello.html">
+            <title>我的卡卷</title>
+            <link rel="stylesheet" href="frozenui-1.3.0/css/frozen.css">
+            <link rel="stylesheet" href="frozenui-1.3.0/demo/demo.css">
+            <script src="zepto.min.js"></script>
+            <script src="frozenui-1.3.0/js/frozen.js"></script>
+            <script type="text/javascript" src="frame/jquery/jquery-3.1.0.min.js"></script>
+    </head>
+    <style type="text/css">
+    #notice img{
+    	width: 93px;
+    	height: 93px;
+    }
+    #notice .failure{
+        font-family: PingFangSC-Regular;
+        font-size: 20px;
+        color: #000000;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    #notice .jump{
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #888888;
+    }
+    </style>
+    <script type="text/javascript">
+     $(document).ready(function(){
+     	 function reduceTime(){
+            var reduce = $("#jishiqi").html();
+            if(reduce == 1){
+            "javascript:location.href='file:///E:/workspace/shanghucaiwuzhongxin/shanghudecaiwuzhongxin.html'"
+            setTimeout(reduceTime());
+            }else{
+            $("#jishiqi").html(--reduce);
+            }
+         setInterval(
+            function (){
+            reduceTime();
+                      }，1000);
+        
+        // function reduceTime() {
+        //     var reduce = $("#jishiqi").html();
+        //     if(reduce == 1){
+        //     return;
+        //     }else{
+        //     $("#jishiqi").html(--reduce);
+        //     setTimeout(reduceTime,1000);
+        //     }
+        // }
+    });
+     
+    </script>
+<body ontouchstart>
+    <section id="notice">
+        <div class="demo-item">
+        
+            <div class="demo-block">
+                <section class="ui-notice">
+                    <img src="image/success.png">
+                    <p class="failure">充值成功</p>
+                    <p class="jump"><span id="jishiqi">4</span>秒后跳转回财务中心</p>
+                </section>
+            </div>
+        
+        </div>
+   </section>      
+</body>
+</html>

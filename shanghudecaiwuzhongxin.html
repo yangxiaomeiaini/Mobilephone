@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>商户的财务中心</title>
+    <link rel="stylesheet" href="frozenui-1.3.0/css/frozen.css">
+    <link rel="stylesheet" href="frozenui-1.3.0/demo/demo.css">
+    <script src="frozenui-1.3.0/dist/lib/zepto.min.js"></script>
+    <script src="frozenui-1.3.0/dist/js/frozen.js"></script>
+    <script type="text/javascript" src="frame/jquery/jquery-3.1.0.min.js"></script>
+
+        
+</head>
+<style type="text/css">
+
+ html{
+ 	font-size: 62.5%;
+ }
+ body{
+ 	background: #e8e8e8;
+ 	font-size: 1.6rem;
+ }
+  #cw_top{
+  	height: 236px;
+  	width: 100%;
+  	background: #ffffff;
+  	border-bottom: 15px solid #e8e8e8;
+  	 display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;tff
+    background: #ffffff;
+    /*padding: 0 10px;*/
+    -webkit-box-sizing:border-box;
+  }
+  #cw_top span{
+  	font-family: PingFangSC-Regular;
+    font-size: 17px;
+    color: #888888;
+    letter-spacing: 0px;
+  }
+  #cw_top img{
+  	margin-top: 14px;
+    margin-bottom: 20px;
+  }
+#jingexianshi .redwoed{
+ 	font-family: PingFangSC-Semibold;
+    font-size: 1.5rem;
+    color: #E89C9C;
+    letter-spacing: 0px;     
+ }  
+ #jingexianshi{
+ 	height: 50px;
+ } 
+#jingexianshi span{
+	font-size: 1.7rem;
+}
+
+#jingexianshi .jexs_nav{
+    width: 100%;
+    line-height: 24px;
+    background: #fff;
+    border: none;
+}
+#jingexianshi .zybk{
+	height: 50px;
+    border-left:  1px solid #E5E5E5;
+	border-right:  1px solid #E5E5E5;
+}
+#cw_top .czbtn{
+	background: #1AAD19;
+    border: 2px solid rgba(4,4,4,0.08);
+    border-radius: 10px;
+    /*ont-family: PingFangSC-Regular;*/
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    margin: 15px 0;
+    height: 35px;
+    line-height: 35px;
+}
+#tab {
+	background: #fff;
+}
+#tab ul.cwtabli{
+	background: #FAFAFA;
+    box-shadow: inset 0px -1px 0px 0px #E5E5E5;
+	height: 47px;
+}
+#tab ul.cwtabli li{
+	height: 47px;
+	opacity: 0.89;
+    font-family: PingFangSC-Regular;
+    font-size: 1.8rem;
+    color: #1AAD19;
+    letter-spacing: 0px;
+}
+.ui-tab-nav li.current {
+    color: #00a5e0;
+    border-bottom: 2px #1AAD19 solid;
+}
+#tab .ui-tab-content{
+    margin-top: 0;
+}
+#tab .tableft{
+	float: left;
+	-webkit-box-pack:center;
+    -webkit-box-align:center;
+    margin-top: 13px;
+}
+#tab .tableft .riqi{
+    color: #888888;
+    font-size: 1.3rem;
+}
+#tab .tableft strong{
+	
+font-size: 1.9rem;
+color: #000000;
+font-weight: 600;
+letter-spacing: 0px;
+}
+#tab .tableft {
+	text-align: left;
+   
+    height: 40px;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+}
+#tab p.tabright{
+	float: right;
+	text-align: right;
+	 color: #000;
+    height: 40px;
+    padding-top: 24px;
+    margin-right: 9px;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+}
+#tab .tabright  span{
+	font-family: PingFangSC-Regular;
+
+display: block;
+line-height: 0px;
+letter-spacing: 0px;
+}
+.zhifu{
+	clear: left;
+	width: 100%;
+	height: 75px;
+	border-bottom: 1px solid #e8e8e8;
+	-webkit-box-pack:center;
+    -webkit-box-align:center;
+    /*display: inline;*/
+}
+.zhifu .shouzhi{
+    font-size: 1.5rem;
+    display: block;
+}
+.zhifu .chuchu{
+    font-size: 13px;
+    display: block;
+     color: #888888;
+}
+#tab li.height60{
+	padding: 0 10px;
+}
+.zhifu .tabright .red{
+    color:#94CE94; 
+}
+.zhifu .tabright .blue{
+    color:#ECADAD; 
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+    $.ajax({
+        type:"get",
+        url:"http://rap.taobao.org/mockjs/9879/weixin/account/6a1a8ef737c2309f2e52486dedfe58ff/",
+        dataType:"jsonp",
+        success:function(data){
+            $("#adbalance").html(data.balance  );
+            $("#addcharge").html(data.deposit);
+            $("#addconsume").html(data.consume);
+        },
+        error:function(){
+            alert('fail');
+        }
+    });
+     var html="";
+     var txt="";
+     var text="";
+    $.ajax({
+        type:"get",
+        url:"http://rap.taobao.org/mockjsdata/9879/weixin/account/6a1a8ef737c2309f2e52486dedfe58ff/record",
+        dataType:"json",
+        success:function(res){
+            
+            for(var i=0;i<res.data.list.length;i++){
+                html+=('<div class="zhifu"><p class="tableft"><span><strong>'+res.data.list[i].recordName+'</strong></span><br><span class="riqi">'+res.data.list[i].time+'</span></p><p class="tabright"> <span class="shouzhi '+((res.data.list[i].recordFee[0]=='+')?'red':'blue')+'">'+res.data.list[i].recordFee+'</span><br><span class="chuchu">'+res.data.list[i].descr+'</span></p></div>');
+                   $('#allli').html(html);
+                   var shouzhi=res.data.list[i].recordFee[0];
+                   if(shouzhi=="+"){
+                        // $(".shouzhi").css({"color":"#94CE94"});
+                        txt+=('<div class="zhifu"><p class="tableft"><span><strong>'+res.data.list[i].recordName+'</strong></span><br><span class="riqi">'+res.data.list[i].time+'</span></p><p class="tabright"> <span class="shouzhi red" >'+res.data.list[i].recordFee+'</span><br><span class="chuchu">'+res.data.list[i].descr+'</span></p></div>');
+                           $('#rechargeli').html(txt);
+                        console.log("赚钱了");
+                    };
+                    if(shouzhi=="-"){
+                        
+                        console.log(shouzhi);
+                        text+=('<div class="zhifu"><p class="tableft"><span><strong>'+res.data.list[i].recordName+'</strong></span><br><span class="riqi">'+res.data.list[i].time+'</span></p><p class="tabright"> <span class="shouzhi blue" >'+res.data.list[i].recordFee+'</span><br><span class="chuchu">'+res.data.list[i].descr+'</span></p></div>');
+                           $('#consumeli').html(text);
+                    }
+                }
+        },
+        error:function(){
+            alert('fail');
+        }
+        
+    });
+
+    
+});	
+</script>
+<body>
+<div id="cw_top" class="ui-row-flex-ver demo-desc">
+    <img class=" " src="image/balance.png" style="width: 60px;height: 60px">
+    <div class="ui-row-flex " id="jingexianshi">
+        <div class="ui-col ui-col jexs_nav">
+        	<span>广告金余额</span><br>
+        	<span class="redwoed" id="adbalance"></span>
+        </div>
+        <div class="ui-col ui-col jexs_nav zybk">
+        	<span>累计充值</span><br>
+        	<span class="redwoed" id="addcharge"></span>
+        </div>
+        <div class="ui-col ui-col jexs_nav">
+        	<span>累计消费</span><br>
+        	<span class="redwoed" id="addconsume"></span>
+        </div>
+    </div>
+    <button type="button" value=""  class="ui-btn-lg ui-btn-primary czbtn" 
+         onClick="window.location.href='file:///E:/workspace/shanghucaiwuzhongxin/ledouchongzhi.html'">
+        充值
+    </button>
+</div>
+ <section id="tab">
+	<div class="demo-item">
+		<div class="demo-block">
+			<div class="ui-tab">
+			    <ul class="ui-tab-nav ui-border-b cwtabli">
+			        <li class="current">全部</li>
+			        <li>充值记录</li>
+			        <li>消费记录</li>
+			    </ul>
+			    <ul class="ui-tab-content  " style="width:300%">
+			        <li class="height60" id="allli">
+			            
+                    </li>
+			        <li class="height60" id="rechargeli">
+                       
+                    </li>
+			        <li class="height60" id="consumeli">
+                        
+                    </li>
+			    </ul>
+			</div>
+		</div>
+		<script class="demo-script">
+		(function (){
+            var tab = new fz.Scroll('.ui-tab', {
+		        role: 'tab',
+		        autoplay:false,
+		        interval: 3000
+		    });
+		    /* 滑动开始前 */
+		    tab.on('beforeScrollStart', function(fromIndex, toIndex) {
+		        console.log(fromIndex,toIndex);// from 为当前页，to 为下一页
+		    })
+		})();
+        </script>
+	</div>
+</section>
+</body>
+</html>
